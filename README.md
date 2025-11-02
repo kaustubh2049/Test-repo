@@ -16,3 +16,44 @@ windows batch : echo Hello World
 
 **Jenkins slave node 7:**
 https://github.com/bonigarcia/selenium-jupiter.git
+use maven integration plugin
+
+**Jenkins slave node 8:**
+new item --> name + pipeline
+pipeline--> pipeliine script
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'BUILDING THE PROJECT...'
+                bat 'echo COMPILING FILES...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'RUNNING TEST CASES...'
+                bat 'echo ALL TESTS PASSED SUCCESSFULLY!'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'DEPLOYING PROJECT...'
+                bat 'echo DEPLOYMENT SUCCESSFUL!'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'PIPELINE COMPLETED SUCCESSFULLY ✅'
+        }
+        failure {
+            echo 'PIPELINE FAILED ❌'
+        }
+    }
+}
+apply and run 
