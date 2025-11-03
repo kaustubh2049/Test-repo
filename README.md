@@ -21,9 +21,10 @@ use maven integration plugin
 **Jenkins slave node 8:**
 new item --> name + pipeline
 pipeline--> pipeliine script
-pipeline {
-    agent any
 
+
+    pipeline {
+    agent any
     stages {
         stage('Build') {
             steps {
@@ -57,3 +58,25 @@ pipeline {
     }
 }
 apply and run 
+Q16(ci-cd 'hello world')
+    
+    pipeline {
+    agent any
+    stages {
+        stage('Clone Repo') {
+            steps {
+                git 'https://github.com/kaustubh2049/GITEXAM-test.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'javac hello.java'
+            }
+        }
+        stage('Run') {
+            steps {
+                sh 'java hello'
+            }
+        }
+    }
+}
